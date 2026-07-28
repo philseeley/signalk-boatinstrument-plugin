@@ -1,0 +1,40 @@
+{
+  "name": "signalk-boatinstrument-plugin",
+  "version": "0.1.0",
+  "description": "Companion SignalK Plugin for the Boat Instrument",
+  "main": "plugin/index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/philseeley/signalk-boatinstrument-plugin.git"
+  },
+  "keywords": [
+    "signalk-node-server-plugin",
+    "signalk-category-instruments"
+  ],
+  "dependencies": {
+    "@signalk/server-api": "^2.0.0"
+  },
+  "devDependencies": {
+    "@signalk/server-api": "^2.4.0",
+    "@types/express": "^5.0.6",
+    "@types/node": "^20.19.43",
+    "express": "^4.22.2",
+    "typescript": "^5.4.0"
+  },
+  "signalk-plugin-enabled-by-default": true,
+  "signalk": {
+    "displayName": "Boat Instrument Plugin",
+    "appIcon": "icon-128.png"
+  },
+  "author": "Phil Seeley",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/philseeley/signalk-boatinstrument-plugin/issues"
+  },
+  "homepage": "https://github.com/philseeley/signalk-boatinstrument-plugin#readme"
+}

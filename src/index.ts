@@ -9,8 +9,11 @@ module.exports = (app: ServerAPI): Plugin => {
     start: (settings, restartPlugin) => {
       app.debug(`Start settings="${settings}"`)
 
-      plugin.registerWithRouter = (router: IRouter) => {
-        router.post('/putPath', (req: any, res: any) => {
+      plugin.registerWithRouter = (router: any) => {
+        const access = (level: string) =>
+          typeof router.access === "function" ? router.access(level) : router;
+
+        access("readwrite").post('/putPath', (req: any, res: any) => {
           app.debug(`putPath path="${req.body['path']}" value="${req.body['value']}"`)
 
           app.handleMessage(plugin.id, {

@@ -24,7 +24,12 @@ module.exports = (app: ServerAPI): Plugin => {
               values: [{
                 path: p,
                 value: v
-              }],
+              }]
+            }]
+          })
+
+          app.handleMessage(plugin.id, {
+            updates: [{
               meta: [{
                 path: p,
                 value: {

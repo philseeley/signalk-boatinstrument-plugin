@@ -7,20 +7,29 @@ module.exports = (app: ServerAPI): Plugin => {
     name: 'Companion SignalK Plugin for the Boat Instrument',
 
     start: (settings, restartPlugin) => {
-      app.debug(`Start settings="${settings}"`)
+      app.debug(`Start settings="${JSON.stringify(settings)}"`)
 
       plugin.registerWithRouter = (router: any) => {
         const access = (level: string) =>
           typeof router.access === "function" ? router.access(level) : router;
 
         access("readwrite").post('/putPath', (req: any, res: any) => {
-          app.debug(`putPath path="${req.body['path']}" value="${req.body['value']}"`)
+          var p = 'boatinstrument.'+req.body['path'] as Path;
+          var v = req.body['value'];
+
+          app.debug(`putPath path="${p}" value="${JSON.stringify(v)}"`)
 
           app.handleMessage(plugin.id, {
             updates: [{
               values: [{
-                path: 'boatinstrument.'+req.body['path'] as Path,
-                value: req.body['value']
+                path: p,
+                value: v
+              }],
+              meta: [{
+                path: p,
+                value: {
+                  timeout: 0
+                }
               }]
             }]
           })

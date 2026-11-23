@@ -4,7 +4,7 @@ import { Path, Plugin, ServerAPI } from '@signalk/server-api'
 module.exports = (app: ServerAPI): Plugin => {
   const plugin: Plugin = {
     id: 'signalk-boatinstrument-plugin',
-    name: 'Companion SignalK Plugin for the Boat Instrument',
+    name: 'Companion Plugin for the Boat Instrument',
 
     start: (settings, restartPlugin) => {
       app.debug(`Start settings="${JSON.stringify(settings)}"`)
